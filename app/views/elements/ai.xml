@@ -1,0 +1,6 @@
+<Alloy>
+	<View id="ai">
+	    <View class="shadow"></View>
+	    <ActivityIndicator id="activityIndicator"/>
+	</View>
+</Alloy>

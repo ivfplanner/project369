@@ -1,0 +1,9 @@
+<Alloy>
+	<View id="calendar">
+	    
+	    <Label id="lblMonth"/>
+	    
+	    <ScrollView id="dateContainer" onClick="calendarClicked"/>
+	    
+	</View>
+</Alloy>

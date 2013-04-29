@@ -1,0 +1,17 @@
+<Alloy>
+	<View id="popup">
+        <View class="shadow"/>
+        <View class="popup">
+            <View class="popup-header">
+                <Label class="popup-header-label">New Folder</Label>
+            </View>
+            <View class="txt-wrapper">
+                <TextField id="txtFolderName" class="txt" hintText="Folder Name"/>
+            </View>
+            <View class="popup-footer">
+                <Button class="btn popup-button" onClick="ok">Ok</Button>
+                <Button class="btn popup-button" onClick="cancel">Cancel</Button>
+            </View>
+        </View>
+    </View>
+</Alloy>

@@ -1,0 +1,14 @@
+<Alloy>
+	<View class="container">
+	    <View class="shadow"/>
+	    
+	    <View class="wrapper">
+	        <Label class="header">Select Time</Label>
+	    	<Picker id="picker"/>
+	    	<View class="button-container">
+	            <Button class="btn" onClick="done">Ok</Button>
+	            <Button class="btn" onClick="cancel">Cancel</Button>
+	        </View>
+	    </View>
+	</View>
+</Alloy>

@@ -1,0 +1,15 @@
+<Alloy>
+	<View id="container">
+	    
+        <View id="calendarContainer"><View height="Ti.UI.SIZE"/></View>
+        
+        <View class="button left" onClick="loadPreviousMonth">
+            <ImageView class="button-icon icon-previous"/>
+        </View>
+        
+        <View class="button right" onClick="loadNextMonth">
+            <ImageView class="button-icon icon-next"/>
+        </View>
+	    
+	</View>
+</Alloy>

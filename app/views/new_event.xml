@@ -1,0 +1,14 @@
+<Alloy>
+	<View class="page">
+	    <Widget id="nav" src="navigation_group"/>
+	    <View class="body">
+	        <View class="page-header">
+	            <Label class="page-header-label">Select the type of event</Label>
+	        </View>
+	        
+	        <View class="page-content">
+	            <TableView id="tblEventType" onClick="eventTypeClicked"/>
+	        </View>
+	    </View>
+	</View>
+</Alloy>

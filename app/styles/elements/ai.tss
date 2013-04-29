@@ -1,0 +1,5 @@
+"#ai": { zIndex: 100, visible: false }
+	".shadow": { backgroundColor: '#000', opacity: 0.5 }
+	"#activityIndicator": { font: { fontSize: Alloy.CFG.size_14 }, color: '#fff', message: 'Loading...' }
+	"#activityIndicator[platform=ios]": { style: Ti.UI.iPhone.ActivityIndicatorStyle.BIG }
+	"#activityIndicator[platform=android]": { style: Ti.UI.ActivityIndicatorStyle.BIG }

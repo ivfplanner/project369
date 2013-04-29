@@ -1,0 +1,10 @@
+"#container": { height: Ti.UI.SIZE }
+
+	"#calendarContainer": { height: Ti.UI.SIZE, top: 0 }
+
+	".button": { width: Alloy.CFG.size_46, height: Alloy.CFG.size_38, top: 0, zIndex: 1 }
+	".left": { left: 0 }
+	".right": { right: 0 }
+		".button-icon": { width: Alloy.CFG.size_26, height: Alloy.CFG.size_23 }
+		".icon-previous": { image: '/images/calendar/previous.png' }
+		".icon-next": { image: '/images/calendar/next.png' }

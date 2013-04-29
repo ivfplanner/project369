@@ -1,0 +1,7 @@
+".container": {  }
+	".shadow": { backgroundColor: '#000', opacity: 0.5 }
+	".wrapper": { backgroundColor: '#fff', height: Ti.UI.SIZE, layout: 'vertical', bottom: 0 }
+		".header": { font: { fontSize: Alloy.CFG.size_20, fontWeight: 'bold' }, color: '#212121', height: Alloy.CFG.size_30, top: Alloy.CFG.size_20 }
+		"#picker": { top: Alloy.CFG.size_5, selectionIndicator: true, type: Ti.UI.PICKER_TYPE_TIME, minuteInterval: 5 }
+		".button-container": { top: Alloy.CFG.size_10, bottom: Alloy.CFG.size_10, height: Ti.UI.SIZE, layout: 'horizontal' }
+			".btn": { width: Alloy.CFG.size_145, left: Alloy.CFG.size_10 }	

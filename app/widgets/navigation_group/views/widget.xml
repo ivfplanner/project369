@@ -1,0 +1,17 @@
+<Alloy>
+	<View id="container">
+	    <View class="border"></View>
+	    
+	    <View id="left" class="button-container">
+	        <View class="separator separator-right"></View>
+	    </View>
+	    
+	    <View id="center">
+	        
+	    </View>
+	    
+	    <View id="right" class="button-container">
+	        <View class="separator separator-left"></View>
+	    </View>
+	</View>
+</Alloy>

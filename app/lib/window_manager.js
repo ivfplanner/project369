@@ -113,7 +113,7 @@ exports.currentWindow = function() {
 }
 
 function attachAI(controller, view) {
-  	var ai = Alloy.createController('/elements/ai');
+  	var ai = Alloy.createController('elements/ai');
   		
 	( view || controller.getView() ).add( ai.getView() );
 	

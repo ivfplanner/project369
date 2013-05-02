@@ -1,0 +1,4 @@
+".page-content": { layout: 'vertical' }
+	".span": { width: Alloy.CFG.size_290, top: Alloy.CFG.size_20, font: { fontSize: Alloy.CFG.size_12, fontFamily: Alloy.CFG.font_DroidSans }, color: '#333' }
+	".logo": { width: Alloy.CFG.size_175, height: Alloy.CFG.size_78, top: Alloy.CFG.size_36, right: Alloy.CFG.size_16, image: '/images/notice/logo.png' }
+	".btn-agree": { width: Alloy.CFG.size_297, height: Alloy.CFG.size_63, top: Alloy.CFG.size_20, bottom: Alloy.CFG.size_3, backgroundImage: '/images/notice/btn-agree.png', backgroundSelectedImage: '/images/notice/btn-agree.png' }

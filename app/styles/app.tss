@@ -1,12 +1,12 @@
 ".win": { navBarHidden: true, orientationModes: [ Ti.UI.PORTRAIT ], fullscreen: true }
 ".win[platform=android]": { windowSoftInputMode: Ti.UI.Android.SOFT_INPUT_ADJUST_PAN }
 	".page": { backgroundImage: '/images/bg.jpg' }
-		".body": { top: Alloy.CFG.size_45, layout: 'vertical'}
+		".body": { top: Alloy.CFG.size_45 }
 			
-			".page-header": { height: Alloy.CFG.size_22, backgroundImage: '/images/page-header.png', zIndex: 1 }
+			".page-header": { height: Alloy.CFG.size_22, backgroundImage: '/images/page-header.png', top: 0, zIndex: 1 }
 				".page-header-label": { font: { fontSize: Alloy.CFG.size_11, fontFamily: Alloy.CFG.font_DroidSerifItalic }, color: '#333', height: Alloy.CFG.size_20, top: 0, left: Alloy.CFG.size_15 }
 			
-			".page-content": { width: Alloy.CFG.size_305, height: Ti.UI.SIZE, top: Alloy.CFG.size__10, backgroundColor: '#fff', borderRadius: Alloy.CFG.size_5 }
+			".page-content": { width: Alloy.CFG.size_305, height: Ti.UI.SIZE, top: Alloy.CFG.size_12, backgroundColor: '#fff', borderRadius: Alloy.CFG.size_5 }
 			
 				".scroll-v": { scrollType: 'vertical', contentHeight: 'auto' }
 				

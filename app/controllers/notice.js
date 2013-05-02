@@ -16,5 +16,5 @@ function loadNav() {
 
 function loadHomePage(e) {
 	Ti.App.Properties.setBool('agreement_agreed', true);
-  	Alloy.Globals.WinManager.loadWindow('index', { isFirstLoad: true });
+  	Alloy.Globals.WinManager.loadWindow('index');
 }

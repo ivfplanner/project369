@@ -11,7 +11,7 @@ function init() {
 }
 
 exports.reload = function(params) {
-	if (params.isFirstLoad !== true) {
+	if (Alloy.Globals.PageManager) {
 		Alloy.Globals.PageManager.reloadPage(params.data);
 	} else {
 		loadHomepage();
@@ -61,12 +61,29 @@ function loadHomepage() {
 	//
 	
 	$.index.open();
+	
+	// bind back event
+	if (OS_ANDROID) {
+		$.index.addEventListener('android:back', function(e) {
+			if ( Ti.App.F_KeyboardShowing ) {
+				// Default - Will hide keyboard
+			} else {
+				var dialog = Ti.UI.createAlertDialog({ cancel: 1, buttonNames: ['Yes', 'No'], message: 'Are you sure?', title: 'Quit?' });
+				dialog.addEventListener('click', function(e) {
+					if (e.index !== e.source.cancel) {
+						$.index.close();
+					}
+				});
+				dialog.show();
+			}
+		});
+	}
 }
 
 function beforePageLoad(url) {
-  	
+  	Alloy.Globals.WinManager.toggleAI(true);
 }
 
 function afterPageLoad(url) {
-  
+  	Alloy.Globals.WinManager.toggleAI(false);
 }

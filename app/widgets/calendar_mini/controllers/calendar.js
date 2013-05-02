@@ -24,14 +24,14 @@ function loadDate(time, args) {
   	for (var i = 0; i < daysInMonth; i++) {
   		var date = prevMonth.toDate().getTime() + '',
 	  		styles = { 
-	  			backgroundGradient: { type: 'linear', colors: [{ color: '#724c8f', position: 0.0 }, { color: '#492367', position: 1.0 }] },
-	  			normalBackgroundGradient: { type: 'linear', colors: [{ color: '#724c8f', position: 0.0 }, { color: '#492367', position: 1.0 }] },
+	  			backgroundImage: '/images/calendar_mini/date-normal.png',
+	  			normalBackgroundImage: '/images/calendar_mini/date-normal.png',
 	  			borderWidth: Alloy.CFG.size_1,
 	  			borderColor: '#fff',
 	  			calendarDate: date, 
 	  			calendarIndex: i,
 	  			calendarType: 'date', 
-	  			height: Ti.UI.SIZE,
+	  			height: Alloy.CFG.size_62,
 	  			top: 0,
 	  			width: Alloy.CFG.size_60,
 	  			layout: 'vertical'
@@ -40,20 +40,21 @@ function loadDate(time, args) {
   		
   		// highlight previous and next month
   		if (prevMonth.month() != args.month) {
-  			styles.backgroundGradient = { type: 'linear', colors: [{ color: '#bebebe', position: 0.0 }, { color: '#bebebe', position: 1.0 }] };
+  			styles.backgroundImage = '/images/calendar_mini/date-disabled.png';
   			styles.touchEnabled = false;
   		}
   		
   		// highlight current date
   		if (date == today) {
-  			styles.backgroundGradient = { type: 'linear', colors: [{ color: '#3c383f', position: 0.0 }, { color: '#3a363d', position: 1.0 }] };
-  			styles.normalBackgroundGradient = { type: 'linear', colors: [{ color: '#3c383f', position: 0.0 }, { color: '#3a363d', position: 1.0 }] };
+  			styles.backgroundImage = '/images/calendar_mini/date-current.png';
+  			styles.normalBackgroundImage = '/images/calendar_mini/date-current.png';
   		}
   		
   		// highlight selected date
   		if (selectedIndex == null && date == args.selectedDate) {
-  			styles.backgroundGradient = { type: 'linear', colors: [{ color: '#014465', position: 0.0 }, { color: '#0d73a6', position: 1.0 }] };
+  			styles.backgroundImage = '/images/calendar_mini/date-selected.png';
   			styles.width = Alloy.CFG.size_80;
+  			styles.height = Alloy.CFG.size_70;
   			labelStyles.font.fontSize = Alloy.CFG.size_27;
   			selectedIndex = i;
   		}
@@ -89,24 +90,32 @@ function calendarClicked(e) {
   		return;
   	}
   	
-  	// highlight selected date
-  	
-  	el.applyProperties({
-		backgroundGradient: { type: 'linear', colors: [{ color: '#014465', position: 0.0 }, { color: '#0d73a6', position: 1.0 }] },
-		width: Alloy.CFG.size_80
-	});
-  	el.children[1].font = { fontSize: Alloy.CFG.size_27, fontFamily: Alloy.CFG.font_DroidSans };
-  	
   	// remove highlight previous selected date
   	
   	if (selectedIndex != null) {
   		var lastDate = $.dateContainer.children[selectedIndex];
+  		
+  		// click on current date
+  		if (lastDate.calendarDate == el.calendarDate) {
+  			return;
+  		}
+  		
   		lastDate.applyProperties({
-  			backgroundGradient: lastDate.normalBackgroundGradient,
-  			width: Alloy.CFG.size_60
+  			backgroundImage: lastDate.normalBackgroundImage,
+  			width: Alloy.CFG.size_60,
+  			height: Alloy.CFG.size_62
   		});
   		lastDate.children[1].font = { fontSize: Alloy.CFG.size_20, fontFamily: Alloy.CFG.font_DroidSans };
   	}
+  	
+  	// highlight selected date
+  	
+  	el.applyProperties({
+		backgroundImage: '/images/calendar_mini/date-selected.png',
+		width: Alloy.CFG.size_80,
+		height: Alloy.CFG.size_70
+	});
+  	el.children[1].font = { fontSize: Alloy.CFG.size_27, fontFamily: Alloy.CFG.font_DroidSans };
   	
   	// update selected index
   	

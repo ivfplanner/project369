@@ -2,4 +2,4 @@
 	
 	"#lblMonth": { font: { fontSize: Alloy.CFG.size_18, fontFamily: Alloy.CFG.font_DroidSans }, color: '#444', height: Alloy.CFG.size_35 }
 		
-	"#dateContainer": { height: Ti.UI.SIZE, layout: 'horizontal', scrollType: 'horizontal' }
+	"#dateContainer": { height: Alloy.CFG.size_70, layout: 'horizontal', scrollType: 'horizontal' }

@@ -1,5 +1,2 @@
-".body": { layout: 'composite' }
-	".page-header": { top: 0 }
-	".calendar-container": { zIndex: 1, top: Alloy.CFG.size_20, height: Ti.UI.SIZE }
-	".page-content": { top: Alloy.CFG.size_12 }
-		"#eventList": { top: Alloy.CFG.size_120 }
+".calendar-container": { zIndex: 1, top: Alloy.CFG.size_20, height: Ti.UI.SIZE }
+"#eventList": { top: Alloy.CFG.size_120 }

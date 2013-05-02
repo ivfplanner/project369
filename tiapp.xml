@@ -12,8 +12,8 @@
     <prerendered-icon>false</prerendered-icon>
     <statusbar-style>default</statusbar-style>
     <statusbar-hidden>false</statusbar-hidden>
-    <fullscreen>false</fullscreen>
-    <navbar-hidden>false</navbar-hidden>
+    <fullscreen>true</fullscreen>
+    <navbar-hidden>true</navbar-hidden>
     <analytics>true</analytics>
     <guid>44ef514c-d35a-4836-a939-da6fc0a7a55c</guid>
     <property name="ti.ui.defaultunit" type="string">system</property>
@@ -49,16 +49,18 @@
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>
+    
     <ios>
         <plist>
             <dict>
                 <key>UIAppFonts</key>
                 <array>
                     <string>/fonts/DroidSans.ttf</string>
-                    <string>/fonts/DroidSans-Bold.ttf</string>
-                    <string>/fonts/DroidSerif-Italic.ttf</string>
+					<string>/fonts/DroidSans-Bold.ttf</string>
+					<string>/fonts/DroidSerif-Italic.ttf</string>
                 </array>
             </dict>
         </plist>
     </ios>
+    
 </ti:app>

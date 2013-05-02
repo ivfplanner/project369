@@ -38,6 +38,9 @@ exports.loadWindow = function(url, data, isResetWins){
 		// make window visible
 		page.getView().open();
 		
+		// handle back event
+		registerBackEvent(page);
+		
 		// remove previous windows
 		if (isResetWins != false) {
 			removePreviousWindows();
@@ -137,3 +140,15 @@ function toggleAI(visible, message, timeout) {
 	}
 }
 exports.toggleAI = toggleAI;
+
+function registerBackEvent(controller) {
+  	if (OS_ANDROID) {
+		controller.getView().addEventListener('android:back', function(e) {
+			if ( Ti.App.F_KeyboardShowing ) {
+				// Default - Will hide keyboard
+			} else {
+				exports.loadPreviousWindow(1);
+			}
+		});
+	}
+}

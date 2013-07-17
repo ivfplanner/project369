@@ -1,7 +1,3 @@
 <Alloy>
-	<Window class="win">
-	    
-		<View id="container"/>
-		
-	</Window>
+	<Window class="win"/>
 </Alloy>

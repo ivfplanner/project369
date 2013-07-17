@@ -4,8 +4,5 @@
 	".button-container": { width: Alloy.CFG.size_45, height: '100%' }	
 	"#left": { left: 0 }
 	"#right": { right: 0 }
-		".separator": { width: 1, height: '100%', top: 0, backgroundColor: '#845ee1' }
-		".separator-right": { right: 0 }
-		".separator-left": { left: 0 }
 	
 	"#center": { left: Alloy.CFG.size_45, right: Alloy.CFG.size_45 }

@@ -31,8 +31,14 @@ exports.init = function(args, onChanged) {
 
 function loadCalendar(selectedDate) {
 	var calendarContainer = $.calendarContainer;
+	
+	// hide lblMonth
+	var lblMonth = calendarContainer.children[0].children[0]
+	lblMonth && (lblMonth.visible = false);
+	
 	calendarContainer.add( Alloy.createWidget('calendar_mini', 'calendar', { month: vars.month, year: vars.year, options: vars.options, selectedDate: selectedDate, callback: callback }).getView() );
-	calendarContainer.remove(calendarContainer.children[0]);
+	
+	calendarContainer.remove( calendarContainer.children[0] );
 }
 
 function loadPreviousMonth(e) {

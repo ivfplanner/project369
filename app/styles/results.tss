@@ -1,0 +1,1 @@
+"#vResults": { layout: 'vertical', width: Alloy.CFG.size_290, height: Ti.UI.SIZE, top: Alloy.CFG.size_20, bottom: Alloy.CFG.size_10, backgroundColor: '#fff' }

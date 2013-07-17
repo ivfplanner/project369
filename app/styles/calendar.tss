@@ -1,2 +1,2 @@
 ".calendar-container": { zIndex: 1, top: Alloy.CFG.size_20, height: Ti.UI.SIZE }
-"#eventList": { top: Alloy.CFG.size_120 }
+	"#eventList": { top: Alloy.CFG.size_120, height: Ti.UI.SIZE, bottom: Alloy.CFG.size_10 }

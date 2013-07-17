@@ -1,0 +1,1 @@
+"#tblNotes": { width: Alloy.CFG.size_290, height: Ti.UI.SIZE, top: Alloy.CFG.size_20, bottom: Alloy.CFG.size_10, layout: 'vertical', backgroundColor: '#d7d7d7' }

@@ -1,0 +1,2 @@
+"#txtName": { width: Alloy.CFG.size_309, height: Alloy.CFG.size_42, left: Alloy.CFG.size_5 }
+"#txtContent": { height: Alloy.CFG.size_180, top: Alloy.CFG.size_20, backgroundColor: '#fff' }

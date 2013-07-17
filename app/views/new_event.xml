@@ -7,7 +7,7 @@
 	        </View>
 	        
 	        <View class="page-content">
-	            <TableView id="tblEventType" onClick="eventTypeClicked"/>
+	            <ScrollView id="tblEventType" class="scroll-v" onClick="eventTypeClicked"/>
 	        </View>
 	    </View>
 	</View>

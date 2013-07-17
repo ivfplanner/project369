@@ -1,0 +1,51 @@
+<Alloy>
+	<View id="container" class="page">
+	    <Widget id="nav" src="navigation_group"/>
+	    <ScrollView class="body scroll-v">
+	        
+	        <View class="page-header">
+	            <Label id="subTitle" class="page-header-label"/>
+	        </View>
+	        
+	        <View class="page-content">
+	            <View id="appointmentBlock" class="h-box">
+		            <ImageView class="icon icon-appointment"/>
+		            <View class="txt-wrapper">
+		                <TextField id="txtDoctorsName" class="txt" hintText="Doctors name" onReturn="hideKeyboard"/>
+		            </View>
+		        </View>
+		        
+		        <View id="medicationBlock" class="h-box">
+		            <ImageView class="icon icon-medication"/>
+	            	<Label class="label">Dosage</Label>
+	            	<TextField id="txtDosage" class="dosage-txt" hintText="Value" onReturn="hideKeyboard"/>
+		        </View>
+		        
+		        <View class="separator"/>
+		        
+		        <View class="h-box">
+		            <ImageView class="icon icon-time"/>
+		            <Label class="label">Time</Label>
+		            <Label id="lblTime" class="link" onClick="changeTime"/>
+		        </View>
+		        
+		        <View class="separator"/>
+		        
+		        <View class="h-box">
+		            <ImageView class="icon icon-date"/>
+		            <View class="v-box">
+		                <Label class="label">Dates</Label>
+		                <View id="vDates"/>
+		            	<Label class="link" onClick="changeDates">Change dates</Label>
+		            </View>
+		        </View>
+		        
+		        <View class="h-box button-container">
+		            <Button class="btn-save" onClick="saveEvent"/>
+		            <Button class="btn-delete" onClick="deleteEvent"/>
+		        </View>
+	        </View>
+	        
+	    </ScrollView>
+	</View>
+</Alloy>

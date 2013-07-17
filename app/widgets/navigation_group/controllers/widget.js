@@ -66,7 +66,7 @@ function loadLeftButton(left) {
   			leftContainer.add(left);
   		}
   		
-  		$.center.left = width;
+  		$.center.left = (typeof width == 'number') ? width : 0;
   		leftContainer.width = width;
   		leftContainer.visible = true;
   	} else {
@@ -92,7 +92,7 @@ function loadRightButton(right) {
   			rightContainer.add(right);
   		}
   		
-  		$.center.right = width;
+  		$.center.right = (typeof width == 'number') ? width : 0;
   		rightContainer.width = width;
   		rightContainer.visible = true;
   	} else {

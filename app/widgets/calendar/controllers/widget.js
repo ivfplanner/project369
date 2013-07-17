@@ -1,22 +1,23 @@
 var moment = require('moment'), //require('alloy/moment'), // built-ins moment.js is just v 1.7
-	vars = {
-		selectedDate: []
-	};
+	vars = {};
 
 /*
  args = {
- 	calendarSize: {
- 		width: 300,
- 		height: 'auto'
- 	},
- 	gapSize: {
- 		top: 0,
- 		left: 0
- 	},
- 	cellSize: {
- 		width: 42,
- 		height: 30
+ 	styles: {
+ 		calendarSize: {
+	 		width: 300,
+	 		height: 'auto'
+	 	},
+	 	gapSize: {
+	 		top: 0,
+	 		left: 0
+	 	},
+	 	cellSize: {
+	 		width: 42,
+	 		height: 30
+	 	},
  	}
+ 	selectedDates: []
  }
  * */
 exports.init = function(args, callback) {
@@ -24,8 +25,10 @@ exports.init = function(args, callback) {
 		calendarSize: 	{ width: 300, height: 'auto' },
 	 	gapSize: 		{ top: 1, left: 1 },
 	 	cellSize: 		{ width: 42, height: 42 }
-	}, args);
+	}, args.styles);
 	vars.options = options;
+	
+	vars.selectedDates = args.selectedDates || [];
 	
 	vars.callback = callback;
 	
@@ -48,7 +51,12 @@ exports.init = function(args, callback) {
 
 function loadCalendar() {
 	var calendarContainer = $.calendarContainer;
-	calendarContainer.add( Alloy.createWidget('calendar', 'calendar', { month: vars.month, year: vars.year, selectedDate: vars.selectedDate, options: vars.options }).getView() );
+	
+	// hide lblMonth
+	var lblMonth = calendarContainer.children[0].children[0]
+	lblMonth && (lblMonth.visible = false);
+	
+	calendarContainer.add( Alloy.createWidget('calendar', 'calendar', { month: vars.month, year: vars.year, selectedDates: vars.selectedDates, options: vars.options }).getView() );
 	calendarContainer.remove(calendarContainer.children[0]);
 }
 
@@ -87,7 +95,7 @@ function calendarClicked(e) {
   			color: el.selectedColor
   		});
   		
-  		vars.selectedDate.push(el.calendarDate);
+  		vars.selectedDates.push(el.calendarDate);
   		
   		el.isSelected = true;
   	} else {
@@ -96,12 +104,12 @@ function calendarClicked(e) {
   			color: el.normalColor
   		});
   		
-  		vars.selectedDate = _.without(vars.selectedDate, el.calendarDate);
+  		vars.selectedDates = _.without(vars.selectedDates, el.calendarDate);
   		
   		el.isSelected = false;
   	}
   	
-  	vars.callback && vars.callback(vars.selectedDate);
+  	vars.callback && vars.callback(vars.selectedDates);
 }
 
 function calendarSwipe(e) {
@@ -118,5 +126,5 @@ function calendarSwipe(e) {
 }
 
 exports.getSelectedDates = function() {
-  	return _.sortBy(vars.selectedDate, function(num){ return parseInt(num); });
+  	return _.sortBy(vars.selectedDates, function(num){ return parseInt(num); });
 }

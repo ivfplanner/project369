@@ -1,0 +1,12 @@
+<Alloy>
+	<View id="container" class="page">
+	    <Widget id="nav" src="navigation_group"/>
+	    <View class="body">
+	        <View class="page-header"/>
+	        
+	        <View class="page-content">
+	            <ScrollView id="tblFolders"/>
+	        </View>
+	    </View>
+	</View>
+</Alloy>

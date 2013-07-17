@@ -1,4 +1,10 @@
-var aiTimeout;
+var aiTimeout,
+	args = arguments[0] || {};
+
+if (args.visible) {
+	$.activityIndicator.show();
+	$.ai.show();
+}
 
 exports.toggle = function(visible, message, timeout) {
 	if (aiTimeout) {
@@ -18,9 +24,6 @@ exports.toggle = function(visible, message, timeout) {
 					message : 'Activity timeout',
 					title : 'Error'
 				});
-				dialog.addEventListener('click', function(e) {
-					Alloy.Globals.WinManager.loadWindow('index', { isTimeout: true });
-				});
 				dialog.show(); 
 			}, timeout);
 		}
@@ -29,3 +32,10 @@ exports.toggle = function(visible, message, timeout) {
 		$.ai.hide();
 	}
 };
+
+exports.unload = function() {
+  	if (aiTimeout) {
+		clearTimeout(aiTimeout);
+		aiTimeout = null;
+	}
+}

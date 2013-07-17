@@ -1,0 +1,14 @@
+<Alloy>
+	<View class="page">
+	    <Widget id="nav" src="navigation_group"/>
+	    <View class="body">
+	        <View class="page-header">
+	            <TextField id="txtName" class="txt" hintText="Please input note title"/>
+	        </View>
+	        
+	        <View class="page-content">
+	            <TextArea id="txtContent" class="txt" hintText="Note content"/>
+	        </View>
+	    </View>
+	</View>
+</Alloy>

@@ -1,0 +1,29 @@
+<Alloy>
+	<View class="page">
+		<Widget id="nav" src="navigation_group"/>
+		<View class="body">
+			<View class="page-header"/>
+			<View class="page-content">
+
+				<View class="wrapper" onClick="settingsClicked">
+					<View elementType="alarm" class="row first-row">
+						<Label class="lbl-title">Alarm sound</Label>
+						<Label id="lblAlarm" class="lbl-value">On</Label>
+					</View>
+					<View elementType="snooze" class="row">
+						<Label class="lbl-title">Snooze</Label>
+						<Label id="lblSnooze" class="lbl-value">5 mins</Label>
+					</View>
+					<View id="vibrate" elementType="vibrate" class="row">
+						<Label class="lbl-title">Vibrate</Label>
+						<Label id="lblVibrate" class="lbl-value">On</Label>
+					</View>
+					<View elementType="feedback" class="row">
+						<Label class="lbl-title">Feedback</Label>
+					</View>
+				</View>
+
+			</View>
+		</View>
+	</View>
+</Alloy>

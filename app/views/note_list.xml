@@ -1,0 +1,14 @@
+<Alloy>
+	<View class="page">
+	    <Widget id="nav" src="navigation_group"/>
+	    <View class="body">
+	        <View class="page-header">
+	            <Label id="folderName" class="page-header-label"/>
+	        </View>
+	        
+	        <View class="page-content">
+	            <ScrollView id="tblNotes" class="scroll-v" onSingletap="tblNotesClicked" onSwipe="tblNotesSwiped"/>
+	        </View>
+	    </View>
+	</View>
+</Alloy>

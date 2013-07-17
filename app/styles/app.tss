@@ -6,7 +6,7 @@
 			".page-header": { height: Alloy.CFG.size_22, backgroundImage: '/images/page-header.png', top: 0, zIndex: 1 }
 				".page-header-label": { font: { fontSize: Alloy.CFG.size_11, fontFamily: Alloy.CFG.font_DroidSerifItalic }, color: '#333', height: Alloy.CFG.size_20, top: 0, left: Alloy.CFG.size_15 }
 			
-			".page-content": { width: Alloy.CFG.size_305, height: Ti.UI.SIZE, top: Alloy.CFG.size_12, backgroundColor: '#fff', borderRadius: Alloy.CFG.size_5 }
+			".page-content": { width: Alloy.CFG.size_305, height: Ti.UI.SIZE, top: Alloy.CFG.size_12, bottom: Alloy.CFG.size_10, backgroundColor: '#fff', borderRadius: Alloy.CFG.size_5 }
 			
 				".scroll-v": { scrollType: 'vertical', contentHeight: 'auto' }
 				
@@ -16,3 +16,4 @@
 	
 				".txt-wrapper": { height: Alloy.CFG.size_37, backgroundColor: '#fff' }
 					".txt": { font: { fontSize: Alloy.CFG.size_15, fontFamily: Alloy.CFG.font_DroidSans }, color: '#666', height: '110%', width: '100%', backgroundColor: 'transparent', paddingLeft: 10, clearButtonMode: Ti.UI.INPUT_BUTTONMODE_ONFOCUS }
+					".txt[platform=android]": { softKeyboardOnFocus: Ti.UI.Android.SOFT_KEYBOARD_SHOW_ON_FOCUS }

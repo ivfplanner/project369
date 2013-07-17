@@ -1,94 +1,138 @@
-var Alloy = require('alloy');
+var Alloy = require('alloy'),
+	UIManager,
+	container,
+	cache = [],
+	onChange;
 
 /*
 args = {
 	container: element,
  	defaultPage: '',
-	beforePageLoad: function(pageURL){},
-	afterPageLoad: function(pageURL){}
+	onChange: function(status, params){
+		status = 
+		  - 0: start load
+		  - 1: loading
+		  - 2: load finish
+		  - 3: view destroy
+	}
 }	
  * */
-var Page = function(args) {
-  	this.container = args.container;
-  	this.beforePageLoad = args.beforePageLoad;
-  	this.afterPageLoad = args.afterPageLoad;
-  	this.cache = [];
+function init(args) {
+	container = args.container;
+	
+	onChange = args.onChange || function() {};
   	
-  	args.defaultPage && this.loadPage(args.defaultPage);
+  	var oUIManager = require('ui_manager');
+  	UIManager = new oUIManager({
+		onLoad: UILoad,
+		onDestroy: UIDestroy
+	});
+	
+	args.defaultPage && load(args.defaultPage);
+  	
+  	Ti.API.log('Page Manager: initialized');
 };
 
-Page.prototype.loadPage = function(url, data, isResetPages) {
+/*
+ params = {
+ 	controller: exports, 
+ 	data: {}, 
+ 	isReset: false,
+ 	url: ''
+ }
+ 
+ controller may have the following functions
+  - cleanup: called when window loose focus
+  - reload: called when window focus again
+  - unload: called when window closed
+  - androidback: back event for android
+ * */
+function UILoad(params) {
+	onChange(1, params); 
+
+	// make page visible
+	container.add( params.controller.getView() );
+}
+
+/*
+ params = {
+ 	controller: exports,
+ 	url: ''
+ }
+ * */
+function UIDestroy(params) {
+	onChange(3, params);
+	
+  	container.remove( params.controller.getView() );
+}
+
+/*
+ params:
+  - url: the url of the page
+  - data: data for that page
+  - isReset: remove previous page or not, default is true
+ * */
+function load(url, data, isReset) {
+	Ti.API.log('Page Manager: Load page ' + url + ': ' + JSON.stringify( data ));
+	
+	var params = {
+		url: url,
+		data: data,
+		isReset: isReset
+	};
 	
   	// callback
   	
-  	this.beforePageLoad && this.beforePageLoad(url);
+  	onChange(0, params);
 	
 	// cleanup previous page
 	
-	var len = this.cache.length;
-	
-	if (len) {
-		var prevPage = this.cache[len - 1];
-		prevPage.cleanup && prevPage.cleanup();
-	}
-	
-	// load new page
-	
-	var page = Alloy.createController(url, data);
-	this.container.add(page.getView());
-	
-	// remove previous page's views
-	
-	if (len && isResetPages != false) {
-		for (var i = len - 1; i >= 0; i--){
-		  	this.container.remove(this.cache[i].getView());
-		};
-		this.cache.length = 0;
-	}
-	
-	// cache new page
-	
-	this.cache.push(page);
+	UIManager.set(params);
   	
   	// callback
   	
-	this.afterPageLoad && this.afterPageLoad(url);
+	onChange(2, params);
 	
+	Ti.API.log('Page Manager: Cached page: ' + UIManager.get().length);
 };
+exports.load = load;
 
 /*
  params: 
   - count: number of revious pages will be removed
   - data: new data for current page
  * */
-Page.prototype.loadPreviousPage = function(count, data) {
-  	var cache = this.cache;
+function loadPrevious(data, count) {
+  	UIManager.setPrevious(data, count);
 	
-	if (cache.length == 0) {
-		return;
-	}
-	
-	var len = cache.length - 1,
-		container = this.container;
-
-	for (var i = len, ii = len - count; i > ii; i--) {
-	  	container.remove(cache[i].getView());
-	  	
-	  	cache.splice(i, 1);
-	};
-	
-	if (cache.length) {
-		var prev = cache[cache.length - 1];
-		prev.reload && prev.reload(data);
-	}
+	Ti.API.log('Page Manager: Cached page: ' + UIManager.get().length);
 };
 
-Page.prototype.reloadPage = function(data) {
-  	var cache = this.cache;
-  	if (cache.length) {
-		var page = cache[cache.length - 1];
-		page.reload && page.reload(data);
-	}
-};
+function getCache(index) {
+  	return UIManager.get(index); 
+}
 
-module.exports = Page;
+/*
+ if an URL is offered, load that page and reset cache
+ if not, reset cache
+ * */
+function reset(url, data) {
+	if (url != null) {
+		load(url, data, false);
+		
+		// remove all page except the last page : index -1
+		UIManager.remove(-2, 0);
+	} else {
+		UIManager.reset();
+	}
+  	
+  	Ti.API.log('Page Manager: Reset! Cached page: ' + UIManager.get().length);
+}
+
+//
+
+exports.init = init;
+exports.getCache = getCache;
+exports.loadPrevious = loadPrevious;
+exports.load = load;
+exports.reset = reset;

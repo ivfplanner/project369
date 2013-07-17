@@ -1,0 +1,31 @@
+".page-content": { layout: 'vertical' }
+
+	".separator": { height: 1, backgroundColor: '#d7d7d7', left: Alloy.CFG.size_8, right: Alloy.CFG.size_8, top: Alloy.CFG.size_10 }
+
+	".h-box": { layout: 'horizontal', top: Alloy.CFG.size_10, height: Ti.UI.SIZE }
+	"#appointmentBlock": { top: Alloy.CFG.size_30, height: Alloy.CFG.size_37 }
+	"#medicationBlock": { top: Alloy.CFG.size_30 }
+	
+		".icon": { width: Alloy.CFG.size_30, height: Alloy.CFG.size_30, left: Alloy.CFG.size_7, right: Alloy.CFG.size_7 }
+		".icon-appointment": { image: '/images/icons/appointment.png' }
+		".icon-medication": { image: '/images/icons/medication.png' }
+		".icon-time": { image: '/images/icons/time.png' }
+		".icon-date": { image: '/images/icons/calendar.png', top: 0 }
+		
+		".txt-wrapper": { width: Alloy.CFG.size_256, backgroundImage: '/images/txt.png' }
+		
+		".label": { font: { fontSize: Alloy.CFG.size_15, fontFamily: Alloy.CFG.font_DroidSans }, color: '#444', left: 0 }
+		".link": { font: { fontSize: Alloy.CFG.size_15, fontFamily: Alloy.CFG.font_DroidSansBold, fontWeight: 'bold' }, color: '#3399cc', left: 0 }
+		"#lblTime": { left: Alloy.CFG.size_7 }
+		
+		".v-box": { layout: 'vertical', height: Ti.UI.SIZE, width: Alloy.CFG.size_256 }
+			"#vDates": { layout: 'horizontal', height: Ti.UI.SIZE, top: Alloy.CFG.size_5, bottom: Alloy.CFG.size_10, left: 0 }
+	
+	".medication-box": { top: 0, width: Alloy.CFG.size_256 }
+		"#lblDosage": { color: '#000', left: Alloy.CFG.size_7 }
+		".dosage-txt": { font: { fontSize: Alloy.CFG.size_15, fontFamily: Alloy.CFG.font_DroidSans }, paddingLeft: 10, color: '#444', backgroundColor: 'transparent', keyboardType: Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION }
+		".dosage-txt[platform=android]": { keyboardType: Ti.UI.KEYBOARD_DEFAULT }
+	
+	".button-container": { height: Alloy.CFG.size_63, top: Alloy.CFG.size_5, bottom: Alloy.CFG.size_4, left: Alloy.CFG.size_4 }		
+		".btn-save": { width: Alloy.CFG.size_149, height: Alloy.CFG.size_63, backgroundImage: '/images/event/btn-save.png', backgroundSelectedImage: '/images/event/btn-save.png' }
+		".btn-delete": { width: Alloy.CFG.size_148, height: Alloy.CFG.size_63, backgroundImage: '/images/event/btn-delete.png', backgroundSelectedImage: '/images/event/btn-delete.png' }

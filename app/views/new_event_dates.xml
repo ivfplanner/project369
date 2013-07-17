@@ -1,0 +1,15 @@
+<Alloy>
+	<View class="page">
+	    <Widget id="nav" src="navigation_group"/>
+	    <View class="body">
+	        <View class="page-header">
+	            <Label class="page-header-label">Tap to select dates</Label>
+	        </View>
+	        <View class="page-content">
+	            <View class="calendar-container">
+	                <Widget id="calendar" src="calendar"/>
+	            </View>
+	        </View>
+	    </View>
+	</View>
+</Alloy>

@@ -1,0 +1,5 @@
+".wrapper": { layout: 'vertical', width: Alloy.CFG.size_290, height: Ti.UI.SIZE, top: Alloy.CFG.size_20, backgroundColor: '#d7d7d7' }
+	".row": { width: Alloy.CFG.size_290, height: Alloy.CFG.size_51, top: 1, backgroundColor: '#fff' }
+	".first-row": { top: 0 }
+		".lbl-title": { font: { fontSize: Alloy.CFG.size_15, fontFamily: Alloy.CFG.font_DroidSans }, color: '#444', left: Alloy.CFG.size_10, height: '100%', touchEnabled: false }
+		".lbl-value": { font: { fontSize: Alloy.CFG.size_15, fontFamily: Alloy.CFG.font_DroidSans }, color: '#444', right: Alloy.CFG.size_10, touchEnabled: false }

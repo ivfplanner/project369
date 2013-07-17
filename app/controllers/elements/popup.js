@@ -9,3 +9,7 @@ function ok(e) {
 function cancel(e) {
   	args.cancel();
 }
+
+exports.focus = function() {
+  	$.txtFolderName.focus();
+}

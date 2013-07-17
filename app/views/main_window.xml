@@ -1,0 +1,9 @@
+<Alloy>
+	<Window id="win" class="win">
+	    
+		<View id="container"/>
+		
+		<Require id="ai" src="elements/ai"/>
+		
+	</Window>
+</Alloy>

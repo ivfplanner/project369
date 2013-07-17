@@ -1,89 +1,106 @@
-function init() {
-	var winManager = require('window_manager');
-	winManager.init({ controller: exports, view: $.index });
-	Alloy.Globals.WinManager = winManager;
-	
-	if ( !Ti.App.Properties.getBool('agreement_agreed', false) ) {
-		winManager.loadWindow('notice');		
-	} else {
-		loadHomepage();
-	}
-}
-
-exports.reload = function(params) {
-	if (Alloy.Globals.PageManager) {
-		Alloy.Globals.PageManager.reloadPage(params.data);
-	} else {
-		loadHomepage();
-	}
-};
-
 init();
 
-function loadHomepage() {
-	// menu
-	
-	var menu = Alloy.createController('sliding_menu', {
-		items: [
-			{ id: 'calendar', icon: '/images/icons/calendar.png', title: 'calendar' },
-			{ id: 'new_event', icon: '/images/icons/event.png', title: 'new event' },
-			{ id: '#', icon: '/images/icons/symptoms.png', title: 'symptoms' },
-			{ id: '#', icon: '/images/icons/notes.png', title: 'notes' },
-			{ id: '#', icon: '/images/icons/results.png', title: 'results' },
-			{ id: '#', icon: '/images/icons/settings.png', title: 'settings' }
-		],
-		callback: function(id) {
-			if ( id == '#' ) {
-				alert(id);	
-			} else {
-				Alloy.Globals.PageManager.loadPage(id);				
-			}
-		}
-	});
-  	
-  	$.index.add(menu.getView());
-  	
-  	// load home page
-  	
-  	var container = $.container;
-  	
-  	container.bottom = Alloy.CFG.size_42; // height of the menu
-  	
-  	var oPageManager = require('page_manager'),
-		pageManager = new oPageManager({
-			container: container,
-			beforePageLoad: beforePageLoad,
-			afterPageLoad: afterPageLoad
-		});
-		
-	Alloy.Globals.PageManager = pageManager;
-	
-	//
-	
-	$.index.open();
-	
-	// bind back event
-	if (OS_ANDROID) {
-		$.index.addEventListener('android:back', function(e) {
-			if ( Ti.App.F_KeyboardShowing ) {
-				// Default - Will hide keyboard
-			} else {
-				var dialog = Ti.UI.createAlertDialog({ cancel: 1, buttonNames: ['Yes', 'No'], message: 'Are you sure?', title: 'Quit?' });
-				dialog.addEventListener('click', function(e) {
-					if (e.index !== e.source.cancel) {
-						$.index.close();
-					}
-				});
-				dialog.show();
-			}
-		});
+function init() {
+	if ( !Ti.App.Properties.getBool( 'populateData', false ) ) {
+		populateMedication();
+		populateResult();
+		populateFolder();
+		Ti.App.Properties.setBool( 'populateData', true );	
 	}
+	
+	var controller;
+	if ( !Ti.App.Properties.getBool('agreement_agreed', false) ) {
+		controller = Alloy.createController('notice');
+	} else {
+		controller = Alloy.createController('main_window');
+	}
+	controller.getView().open();
 }
 
-function beforePageLoad(url) {
-  	Alloy.Globals.WinManager.toggleAI(true);
+// Load initiate medicine data 
+function populateMedication() {
+	Alloy.createCollection('events');
+	var medications = [
+		'Antibiotics',
+	 	'Augmentin',
+	 	'Baby Aspririn',
+	 	'Bravelle',
+	 	'Cetrorelix',
+	 	'Centrotide',
+	 	'Clexane',
+	 	'Crinone',
+	 	'Crinone gel / cream',
+	 	'DHEA',
+	 	'Doxycycline',
+	 	'Estrace',
+	 	'Estrogen patch',
+		'Follicle Stimulating Hormone (FSH)',
+		'Gonadotropin-releasing hormone (GnRH)',
+	 	'Gonadotropins',
+	 	'Gonal-F',
+		'Human Chorionic Gonadotropin (hCG)',
+		'Human Menopausal Gonadotropin (hMG)',
+	 	'Leuprolide Acetate',
+	 	'Lucrib',
+	 	'Lupron',
+	 	'Menotropin',
+	 	'Menopur',
+	 	'Micronized DHEA',
+	 	'Micronized Estradiol',
+	 	'Noverel',
+	 	'Orgalutran',
+	 	'Ovidrel',
+	 	'Prednisone',
+		'Prenatal Vitamins',
+	 	'Progresterone',
+		'Prometrium',
+	 	'Puregon',
+	 	'Repronex',
+	 	'Synarel'
+	];
+	var db = Ti.Database.open('ivfplanner');
+	db.execute('BEGIN;');
+	for ( var i = 0, ml = medications.length; i < ml; i++ ) {
+		var sql = "INSERT INTO events('name') VALUES ('" + medications[i] + "')";
+  		db.execute( sql );
+	}
+	db.execute('COMMIT;');
+	db.close();
 }
 
-function afterPageLoad(url) {
-  	Alloy.Globals.WinManager.toggleAI(false);
+// Load initiate result data 
+function populateResult() {
+	Alloy.createCollection('result');
+	var result = [
+		{ key: 'Blood Type'	, value: ''	 },
+		{ key: 'AMH Level'	, value: ''	 },
+		{ key: 'FSH Level'	, value: ''  },
+		{ key: 'Sperm Count', value: ''  }
+	];
+	var db = Ti.Database.open('ivfplanner');
+	db.execute('BEGIN;');
+	for ( var i = 0, rl = result.length; i < rl; i++ ) {
+		var sql = "INSERT INTO result('result_key', 'result_value') VALUES ('" + result[i].key + "', '" + result[i].value + "')";
+  		db.execute( sql );
+	} 
+	db.execute('COMMIT;');
+	db.close();
+}
+
+// Load initiate folder data 
+function populateFolder() {
+	Alloy.createCollection('note_folders');
+	var folder = [
+		'Symptoms',
+		'Questions',
+		'General'
+	];
+	var db = Ti.Database.open('ivfplanner');
+	db.execute('BEGIN;');
+	for ( var i = 0, rl = folder.length; i < rl; i++ ) {
+		var sql = "INSERT INTO note_folders('name') VALUES ('" + folder[i] + "')";
+  		db.execute( sql );
+	} 
+	db.execute('COMMIT;');
+	db.close();
 }

@@ -1,6 +1,6 @@
 <Alloy>
 	<View id="menu">
-	    <View id="handler" onSwipe="toggleMenu"/>
-	    <View id="container" onClick="menuClicked"/>
+	    <View id="handler" onTouchstart="touchstart" onTouchmove="touchmove" onTouchend="touchend"/> <!-- onClick="handlerClicked" onSwipe="handlerSwiped" -->
+	    <TableView id="container" onClick="menuClicked"/>
 	</View>
 </Alloy>

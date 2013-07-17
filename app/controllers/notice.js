@@ -2,6 +2,23 @@ init();
 
 function init() {
 	loadNav();
+	
+	if (OS_ANDROID) {
+		$.winNotice.addEventListener('androidback', function(e) {
+			if ( Ti.App.F_KeyboardShowing ) {
+				// Default - Will hide keyboard
+			} else {
+				var dialog = Ti.UI.createAlertDialog({ cancel : 1, buttonNames : ['Yes', 'No'], message : 'Are you sure?', title : 'Quit?' });
+				dialog.addEventListener('click', function(e) {
+					if (e.index !== e.source.cancel) {
+						var activity = Ti.Android.currentActivity;
+						activity.finish();
+					}
+				});
+				dialog.show();
+			}
+		});
+	}
 }
 
 function loadNav() {
@@ -15,6 +32,13 @@ function loadNav() {
 }
 
 function loadHomePage(e) {
+	$.ai.toggle(true);
+	
 	Ti.App.Properties.setBool('agreement_agreed', true);
-  	Alloy.Globals.WinManager.loadWindow('index');
+  	
+  	Alloy.createController('main_window').getView().open();
+  	
+  	setTimeout(function() {
+		$.winNotice.close();
+	}, 200);
 }

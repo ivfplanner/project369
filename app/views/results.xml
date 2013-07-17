@@ -1,0 +1,12 @@
+<Alloy>
+	<View class="page">
+	    <Widget id="nav" src="navigation_group"/>
+	    <View class="body">
+	        <View class="page-header"/>
+	        
+	        <View class="page-content">
+	            <ScrollView id="vResults" class="scroll-v"/>
+	        </View>
+	    </View>
+	</View>
+</Alloy>

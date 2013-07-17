@@ -23,8 +23,8 @@ function loadWeek(options) {
 function loadDate(time, args) {
 	var dayIndex = time.day(), // Sunday as 0 and Saturday as 6
 		options = args.options,
-		selectedDate = args.selectedDate,
-		selectedLength = selectedDate.length,
+		selectedDates = args.selectedDates,
+		selectedLength = selectedDates.length,
   		prevMonth = time.subtract('days', ( dayIndex ? dayIndex : 7 ) - 1),
   		today = moment().startOf('hour').hour(0).toDate().getTime() + '';// get today's time stamp without hours, minutes and seconds
   	
@@ -65,7 +65,7 @@ function loadDate(time, args) {
   		
   		// highlight selected dates
   		for(var j = 0; j < selectedLength; j++){
-			if (date == selectedDate[j]) {
+			if (date == selectedDates[j]) {
 				styles.color = '#fff';
 				styles.backgroundGradient = { type: 'linear', colors: [{ color: '#014465', position: 0.0 }, { color: '#0d73a6', position: 1.0 }] };
 				styles.isSelected = true;

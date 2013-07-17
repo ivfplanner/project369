@@ -1,0 +1,6 @@
+".page-content": { layout: 'vertical', height: Alloy.CFG.size_300 }
+	".searchbox": { height: Alloy.CFG.size_37, top: Alloy.CFG.size_20, bottom: Alloy.CFG.size_5 }
+		".icon-medication": { image: '/images/icons/medication.png', width: Alloy.CFG.size_30, height: Alloy.CFG.size_30, left: Alloy.CFG.size_7, top: Alloy.CFG.size_3 }
+		".txt-wrapper": { width: Alloy.CFG.size_256, left: Alloy.CFG.size_43, backgroundImage: '/images/txt.png' }
+			"#txtMedicationName": { returnKeyType: Ti.UI.RETURNKEY_GO }
+	"#tblRelatedName": { separatorColor: 'transparent', width: Alloy.CFG.size_270, bottom: Alloy.CFG.size_10, left: Alloy.CFG.size_43 }

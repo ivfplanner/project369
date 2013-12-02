@@ -21,7 +21,7 @@ function loadNav( f_id, id ) {
   		n_created = moment().format('YYYY-MM-DD HH:mm:ss');
   		
 	title.add( Ti.UI.createImageView({ image: '/images/icons/notes.png', width: Alloy.CFG.size_30, height: Alloy.CFG.size_30, left: Alloy.CFG.size_15 }) );
-	title.add( Ti.UI.createLabel({ text: 'notes', font: { fontSize: Alloy.CFG.size_20, fontFamily: Alloy.CFG.font_DroidSans }, color: '#fff', left: Alloy.CFG.size_50 }) );
+	title.add( Ti.UI.createLabel({ text: 'notes', font: { fontSize: Alloy.CFG.size_20, fontFamily: 'DroidSans' }, color: '#fff', left: Alloy.CFG.size_50 }) );
   	
   	$.nav.init({
 		title: title,
@@ -35,7 +35,7 @@ function loadNav( f_id, id ) {
 				  		content: $.txtContent.value,
 				  		mode: mode,
 				  		created: n_created
-					}
+					};
 					
 					// Update current note, if don't have id, it will be a new note
 					if ( id ) {

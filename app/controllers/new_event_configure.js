@@ -55,7 +55,7 @@ function init() {
 function loadNav() {
   	var title = Ti.UI.createView({ width: Ti.UI.SIZE, height: Ti.UI.SIZE, left: 0 });
 	title.add( Ti.UI.createImageView({ image: '/images/icons/event.png', width: Alloy.CFG.size_30, height: Alloy.CFG.size_30, left: Alloy.CFG.size_15 }) );
-	title.add( Ti.UI.createLabel({ text: (cacheData.eventId ? 'edit ' : 'new ') + cacheData.type, font: { fontSize: Alloy.CFG.size_20, fontFamily: Alloy.CFG.font_DroidSans }, color: '#fff', left: Alloy.CFG.size_50 }) );
+	title.add( Ti.UI.createLabel({ text: (cacheData.eventId ? 'edit ' : 'new ') + cacheData.type, font: { fontSize: Alloy.CFG.size_20, fontFamily: 'DroidSans' }, color: '#fff', left: Alloy.CFG.size_50 }) );
 	
   	$.nav.init({
 		title: title,
@@ -79,7 +79,7 @@ function loadTime(date) {
 function loadDates(selectedDates) {
   	for(var i = 0, ii = selectedDates.length; i < ii; i++){
 	  	var date = moment(parseInt( selectedDates[i] )).format('YYYY MMM DD');
-	  	$.vDates.add( Ti.UI.createLabel({ text: date, font: { fontSize: Alloy.CFG.size_12, fontFamily: Alloy.CFG.font_DroidSans }, color: '#666', width: Alloy.CFG.size_78, left: i%3 ? Alloy.CFG.size_10 : 0 }) );
+	  	$.vDates.add( Ti.UI.createLabel({ text: date, font: { fontSize: Alloy.CFG.size_12, fontFamily: 'DroidSans' }, color: '#666', width: Alloy.CFG.size_78, left: i%3 ? Alloy.CFG.size_10 : 0 }) );
 	};
 }
 
@@ -205,19 +205,14 @@ function saveNotification( data, id ) {
 	// 1. Get id of events - if update data.id = id else add new data.id = fetch id from database
 	if ( id ) {
 		data.id = id;
-		
-		// 2. Delete old notification and create new one
-		notify.unregister( data.id );
 	} else {
 		events.fetch({ query:'SELECT MAX(id) as id FROM events' });
 		eventData = events.toJSON()[0];
 		data.id = eventData.id;	
-	}
-	
-	// 3. Parse date of events from string to array
+	}	
+	// 2. Parse date of events from string to array
 	data.dates = data.dates.split(',');
-	
-	// 4. Get name of event to show with notification
+	// 3. Get name of event to show with notification
 	if ( data.type == 'medication' ) {
 		if ( data.dosage ) {
 			data.name = data.name + ' - ' + data.dosage;
@@ -225,25 +220,24 @@ function saveNotification( data, id ) {
 	} else {
 		data.name = 'You have appointment with Doctor ' + data.doctor;
 	}	
-	
 	for ( var i = 0, ii = data.dates.length; i < ii; i++ ) {
-		// 5. Get date time of events
-		data.datetime = moment(parseInt( data.dates[i] )).format('YYYY-MM-DD') + ' ' + moment( data.time ).format('HH:mm');
-		
-		// 6. Set sound for notification
+		// 4. Get date time of events
+		data.datetime = moment( parseInt( data.dates[i] ) ).format('YYYY-MM-DD') + ' ' + moment( data.time ).format('HH:mm');
+		var event_id = data.id;
+		data.id = parseInt( data.id + '' + data.dates[i] );
+		// 5. Set sound for notification
 		if ( Ti.App.Properties.getBool('sound_enable', true) ) {
 			data.playsound = true;
 		} else {
 			data.playsound = false;
-		}
-		
+		}		
 		if ( !OS_IOS ) {
-			// 7. Set vibrate for notification
+			// 6. Set vibrate for notification
 			data.vibrate = Ti.App.Properties.getBool('vibrate_enable', true);
 		}
-
-		// 8. Create new notification
+		// 7. Create new notification
 		notify.register( data );
+		data.id = event_id;
 	};
 }
 

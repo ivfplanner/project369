@@ -27,7 +27,7 @@ function loadMenu(items) {
 		
 		var wrapper = Ti.UI.createTableViewRow({ id: item.id, height: Alloy.CFG.size_56, backgroundImage: '/images/menu/bg-item.png' });
 		wrapper.add( Ti.UI.createImageView({ image: item.icon, width: Alloy.CFG.size_30, height: Alloy.CFG.size_30, left: Alloy.CFG.size_15, touchEnabled: false }) );
-		wrapper.add( Ti.UI.createLabel({ text: item.title, font: { fontSize: Alloy.CFG.size_18, fontFamily: Alloy.CFG.font_DroidSans }, color: '#333', height: Alloy.CFG.size_56, left: Alloy.CFG.size_60, touchEnabled: false }) );
+		wrapper.add( Ti.UI.createLabel({ text: item.title, font: { fontSize: Alloy.CFG.size_18, fontFamily: 'DroidSans' }, color: '#333', height: Alloy.CFG.size_56, left: Alloy.CFG.size_60, touchEnabled: false }) );
 		
 		rows.push(wrapper);
   	};

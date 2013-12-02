@@ -10,7 +10,7 @@ function init() {
 function loadNav() {
   	var title = Ti.UI.createView({ width: Ti.UI.SIZE, height: Ti.UI.SIZE, left: 0 });
 	title.add( Ti.UI.createImageView({ image: '/images/icons/event.png', width: Alloy.CFG.size_30, height: Alloy.CFG.size_30, left: Alloy.CFG.size_15 }) );
-	title.add( Ti.UI.createLabel({ text: 'new event', font: { fontSize: Alloy.CFG.size_20, fontFamily: Alloy.CFG.font_DroidSans }, color: '#fff', left: Alloy.CFG.size_50 }) );
+	title.add( Ti.UI.createLabel({ text: 'new event', font: { fontSize: Alloy.CFG.size_20, fontFamily: 'DroidSans' }, color: '#fff', left: Alloy.CFG.size_50 }) );
 	
   	$.nav.init({
 		title: title
@@ -28,7 +28,7 @@ function loadEventTypes() {
 		
 		var row = Ti.UI.createView({ url: oData.url, height: Alloy.CFG.size_65, top: i ? 1 : 0, backgroundColor: '#fff' });
 		row.add( Ti.UI.createImageView({ image: '/images/icons/check.png', width: Alloy.CFG.size_30, height: Alloy.CFG.size_30, left: 0, visible: false, touchEnabled: false }) );
-		row.add( Ti.UI.createLabel({ text: oData.title, font: { fontSize: Alloy.CFG.size_18, fontFamily: Alloy.CFG.font_DroidSans }, color: '#666', left: Alloy.CFG.size_37, height: '100%', touchEnabled: false }) );
+		row.add( Ti.UI.createLabel({ text: oData.title, font: { fontSize: Alloy.CFG.size_18, fontFamily: 'DroidSans' }, color: '#666', left: Alloy.CFG.size_37, height: '100%', touchEnabled: false }) );
 		
 		$.tblEventType.add(row);
 	};

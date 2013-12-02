@@ -18,7 +18,7 @@ exports.init = function(params) {
 	loadRightButton(params.right);
   	
   	loadTitle(params.title);
-}
+};
 
 exports.update = function(params) {
 	var child = $.left.children;
@@ -103,7 +103,7 @@ function loadRightButton(right) {
 
 function loadTitle(title) {
 	if (typeof title == 'string') {
-  		$.center.add( Ti.UI.createLabel({ text: title, font: { fontSize: Alloy.CFG.size_20, fontFamily: Alloy.CFG.font_DroidSans }, color: '#fff', ellipsize: true, wordWrap: true }) );
+  		$.center.add( Ti.UI.createLabel({ text: title, font: { fontSize: Alloy.CFG.size_20, fontFamily: 'DroidSans' }, color: '#fff', ellipsize: true, wordWrap: true }) );
   	} else {
   		$.center.add( title );
   	}

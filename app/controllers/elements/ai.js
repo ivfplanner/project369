@@ -38,4 +38,4 @@ exports.unload = function() {
 		clearTimeout(aiTimeout);
 		aiTimeout = null;
 	}
-}
+};

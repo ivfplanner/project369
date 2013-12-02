@@ -54,7 +54,7 @@ exports.register = function(event) {
     		intent.putExtra( 'interval', interval );
 	    }
 	    
-	    Ti.API.info('===EVENT ' + event.id + ' is registerd.' );
+	    Ti.API.info('===EVENT ' + event.id + ' is registered.' );
 	    Ti.App.Properties.setString('notify_' + event.id, 'start');
 	    Ti.Android.startService( intent );
 	}

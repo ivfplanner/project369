@@ -36,7 +36,7 @@ function loadDate(time, args) {
 	  			width: Alloy.CFG.size_60,
 	  			layout: 'vertical'
 	  		},
-	  		labelStyles = { text: prevMonth.date(), font: { fontSize: Alloy.CFG.size_20, fontFamily: Alloy.CFG.font_DroidSans }, color: '#fff', height: Ti.UI.SIZE, top: Alloy.CFG.size_3, bottom: Alloy.CFG.size_12, touchEnabled: false };
+	  		labelStyles = { text: prevMonth.date(), font: { fontSize: Alloy.CFG.size_20, fontFamily: 'DroidSans' }, color: '#fff', height: Ti.UI.SIZE, top: Alloy.CFG.size_3, bottom: Alloy.CFG.size_12, touchEnabled: false };
   		
   		// highlight previous and next month
   		if (prevMonth.month() != args.month) {
@@ -60,7 +60,7 @@ function loadDate(time, args) {
   		}
   		
   		var wrapper = Ti.UI.createView(styles);
-  		wrapper.add( Ti.UI.createLabel({ text: weekNames[prevMonth.day()], font: { fontSize: Alloy.CFG.size_15, fontFamily: Alloy.CFG.font_DroidSans }, color: '#fff', top: Alloy.CFG.size_5, touchEnabled: false }) );
+  		wrapper.add( Ti.UI.createLabel({ text: weekNames[prevMonth.day()], font: { fontSize: Alloy.CFG.size_15, fontFamily: 'DroidSans' }, color: '#fff', top: Alloy.CFG.size_5, touchEnabled: false }) );
   		wrapper.add( Ti.UI.createLabel(labelStyles) );
 		$.dateContainer.add(wrapper);
 		
@@ -105,7 +105,7 @@ function calendarClicked(e) {
   			width: Alloy.CFG.size_60,
   			height: Alloy.CFG.size_62
   		});
-  		lastDate.children[1].font = { fontSize: Alloy.CFG.size_20, fontFamily: Alloy.CFG.font_DroidSans };
+  		lastDate.children[1].font = { fontSize: Alloy.CFG.size_20, fontFamily: 'DroidSans' };
   	}
   	
   	// highlight selected date
@@ -115,7 +115,7 @@ function calendarClicked(e) {
 		width: Alloy.CFG.size_80,
 		height: Alloy.CFG.size_70
 	});
-  	el.children[1].font = { fontSize: Alloy.CFG.size_27, fontFamily: Alloy.CFG.font_DroidSans };
+  	el.children[1].font = { fontSize: Alloy.CFG.size_27, fontFamily: 'DroidSans' };
   	
   	// update selected index
   	

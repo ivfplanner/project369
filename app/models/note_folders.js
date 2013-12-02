@@ -28,4 +28,4 @@ exports.definition = {
 
 		return Model;
 	}
-}
+};

@@ -2,7 +2,7 @@
 var service 		= Ti.Android.currentService,
 	serviceIntent 	= service.getIntent(),
 	serviceMessage 	= serviceIntent.getStringExtra('message'),
-	serviceId 		= serviceIntent.getIntExtra('notifyid', 1),
+	serviceId 		= serviceIntent.getDoubleExtra('notifyid', 1),
 	doVibrate 		= serviceIntent.getBooleanExtra('vibrate', true),
 	playsound 		= serviceIntent.getBooleanExtra('playsound', true),
 	notifyFlag 		= 'notify_' + serviceId;
@@ -26,7 +26,7 @@ if ( Ti.App.Properties.getString(notifyFlag) == 'delete' ) {
 	var activity = Ti.Android.currentActivity;
 	var intent = Ti.Android.createIntent({
 	    	action: Ti.Android.ACTION_MAIN,
-	    	className: 'com.imobicloud.ivf.IvfPlannerActivity',
+	    	className: 'com.ivfplanner.IvfPlannerActivity',
 	        flags: Ti.Android.FLAG_ACTIVITY_SINGLE_TOP
 	    });
 	    intent.addCategory(Titanium.Android.CATEGORY_LAUNCHER);
@@ -47,7 +47,7 @@ if ( Ti.App.Properties.getString(notifyFlag) == 'delete' ) {
 	    when : new Date().getTime(),
 	    icon : Ti.App.Android.R.drawable.appicon,
 	    flags : Titanium.Android.ACTION_DEFAULT | Titanium.Android.FLAG_AUTO_CANCEL | Titanium.Android.FLAG_SHOW_LIGHTS
-	}
+	};
 	
 	if ( doVibrate ) {
 		notifyData.defaults |= Titanium.Android.DEFAULT_VIBRATE;
@@ -68,13 +68,12 @@ if ( Ti.App.Properties.getString(notifyFlag) == 'delete' ) {
 		if (e.index == 0) {
 			var notify 	   = require('notify'),
 				snoozeData = {};
-			
+			notify.unregister( parseInt( e.source.notifyid ) );
 			snoozeData.name 		= e.source.message;
 			snoozeData.id 			= e.source.notifyid;
 			snoozeData.playsound	= Ti.App.Properties.getBool('sound_enable', true);
 			snoozeData.vibrate 		= Ti.App.Properties.getBool('vibrate_enable', true);
-			snoozeData.datetime		= new Date( new Date().getTime() + ( Ti.App.Properties.getInt('snooze', 5)*60000 ) );
-
+			snoozeData.datetime		= new Date( new Date().getTime() + ( Ti.App.Properties.getInt('snooze', 5) * 60000 ) );
 			notify.register( snoozeData );
 		}
 	});

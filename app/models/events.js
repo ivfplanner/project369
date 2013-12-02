@@ -16,4 +16,4 @@ exports.definition = {
 			idAttribute: "id"
 		}
 	}
-}
+};

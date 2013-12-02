@@ -10,7 +10,7 @@ function init() {
 function loadNav() {
 	var title = Ti.UI.createView({ width: Ti.UI.SIZE, height: Ti.UI.SIZE, left: 0 });
 	title.add( Ti.UI.createImageView({ image: '/images/icons/results.png', width: Alloy.CFG.size_30, height: Alloy.CFG.size_30, left: Alloy.CFG.size_15 }) );
-	title.add( Ti.UI.createLabel({ text: 'results', font: { fontSize: Alloy.CFG.size_20, fontFamily: Alloy.CFG.font_DroidSans }, color: '#fff', left: Alloy.CFG.size_50 }) );
+	title.add( Ti.UI.createLabel({ text: 'results', font: { fontSize: Alloy.CFG.size_20, fontFamily: 'DroidSans' }, color: '#fff', left: Alloy.CFG.size_50 }) );
   	
   	$.nav.init({
 		title: title,
@@ -48,7 +48,7 @@ function loadResult( container, key, value, hasTop, id, focusTextField ) {
 	var resultKeyField = Ti.UI.createTextField({ 
 		value: key,
 		hintText: 'Name', 
-		font: { fontSize: Alloy.CFG.size_15, fontFamily: Alloy.CFG.font_DroidSans }, 
+		font: { fontSize: Alloy.CFG.size_15, fontFamily: 'DroidSans' }, 
 		color: '#444', 
 		height: '110%', 
 		width: Alloy.CFG.size_140, 
@@ -72,7 +72,7 @@ function loadResult( container, key, value, hasTop, id, focusTextField ) {
 		resultId: id,
 		value: value, 
 		hintText: 'Value', 
-		font: { fontSize: Alloy.CFG.size_15, fontFamily: Alloy.CFG.font_DroidSans }, 
+		font: { fontSize: Alloy.CFG.size_15, fontFamily: 'DroidSans' }, 
 		color: '#444', 
 		height: '110%', 
 		width: Alloy.CFG.size_140, 

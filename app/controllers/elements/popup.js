@@ -12,4 +12,4 @@ function cancel(e) {
 
 exports.focus = function() {
   	$.txtFolderName.focus();
-}
+};

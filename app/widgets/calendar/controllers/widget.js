@@ -53,7 +53,7 @@ function loadCalendar() {
 	var calendarContainer = $.calendarContainer;
 	
 	// hide lblMonth
-	var lblMonth = calendarContainer.children[0].children[0]
+	var lblMonth = calendarContainer.children[0].children[0];
 	lblMonth && (lblMonth.visible = false);
 	
 	calendarContainer.add( Alloy.createWidget('calendar', 'calendar', { month: vars.month, year: vars.year, selectedDates: vars.selectedDates, options: vars.options }).getView() );
@@ -127,4 +127,4 @@ function calendarSwipe(e) {
 
 exports.getSelectedDates = function() {
   	return _.sortBy(vars.selectedDates, function(num){ return parseInt(num); });
-}
+};

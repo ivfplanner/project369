@@ -10,12 +10,12 @@ function init() {
 
 exports.reload = function(){
 	init();
-}
+};
 
 function loadNav() {
   	var title = Ti.UI.createView({ width: Ti.UI.SIZE, height: Ti.UI.SIZE, left: 0 });
 	title.add( Ti.UI.createImageView({ image: '/images/icons/calendar.png', width: Alloy.CFG.size_30, height: Alloy.CFG.size_30, left: Alloy.CFG.size_15 }) );
-	title.add( Ti.UI.createLabel({ text: 'calendar', font: { fontSize: Alloy.CFG.size_20, fontFamily: Alloy.CFG.font_DroidSans }, color: '#fff', left: Alloy.CFG.size_50 }) );
+	title.add( Ti.UI.createLabel({ text: 'calendar', font: { fontSize: Alloy.CFG.size_20, fontFamily: 'DroidSans' }, color: '#fff', left: Alloy.CFG.size_50 }) );
 	
   	$.nav.init({
 		title: title,
@@ -82,14 +82,14 @@ function loadEvents( m ) {
 			var vEventInfo = Ti.UI.createView({ layout: 'vertical', height: Ti.UI.SIZE, bottom: Alloy.CFG.size_5, left: Alloy.CFG.size_35, touchEnabled: false });
 			vEvent.add(vEventInfo);
 			
-				vEventInfo.add( Ti.UI.createLabel({ text: title, font: { fontSize: Alloy.CFG.size_15, fontFamily: Alloy.CFG.font_DroidSans }, color: '#444', left: 0, top: Alloy.CFG.size_8, touchEnabled: false }) );
-				vEventInfo.add( Ti.UI.createLabel({ text: time, font: { fontSize: Alloy.CFG.size_10, fontFamily: Alloy.CFG.font_DroidSans }, color: '#444', left: 0, touchEnabled: false }) );
+				vEventInfo.add( Ti.UI.createLabel({ text: title, font: { fontSize: Alloy.CFG.size_15, fontFamily: 'DroidSans' }, color: '#444', left: 0, top: Alloy.CFG.size_8, touchEnabled: false }) );
+				vEventInfo.add( Ti.UI.createLabel({ text: time, font: { fontSize: Alloy.CFG.size_10, fontFamily: 'DroidSans' }, color: '#444', left: 0, touchEnabled: false }) );
 	};
 	
 	// no event
 	if (ln == 0) {
 		var inner = Ti.UI.createView({ height: Alloy.CFG.size_45, top: 0, backgroundColor: '#fff' });
-		inner.add( Ti.UI.createLabel({ text: 'No event', font: { fontSize: Alloy.CFG.size_15, fontFamily: Alloy.CFG.font_DroidSans }, color: '#444', left: Alloy.CFG.size_35, top: Alloy.CFG.size_8, touchEnabled: false }) );
+		inner.add( Ti.UI.createLabel({ text: 'No event', font: { fontSize: Alloy.CFG.size_15, fontFamily: 'DroidSans' }, color: '#444', left: Alloy.CFG.size_35, top: Alloy.CFG.size_8, touchEnabled: false }) );
 		wrapper.add(inner);
 	}
 	

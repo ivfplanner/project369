@@ -16,7 +16,7 @@ function loadWeek(options) {
   	var weekNames = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
   	
   	for (var i = 0; i < 7; i++) {
-		$.weekContainer.add( Ti.UI.createLabel({ text: weekNames[i], width: options.cellSize.width, left: i ? options.gapSize.left : 0, font: { fontSize: Alloy.CFG.size_15, fontFamily: Alloy.CFG.font_DroidSans }, color: '#ccc', textAlign: 'center', height: '100%' }) );
+		$.weekContainer.add( Ti.UI.createLabel({ text: weekNames[i], width: options.cellSize.width, left: i ? options.gapSize.left : 0, font: { fontSize: Alloy.CFG.size_15, fontFamily: 'DroidSans' }, color: '#ccc', textAlign: 'center', height: '100%' }) );
 	};
 }
 
@@ -40,7 +40,7 @@ function loadDate(time, args) {
 	  			
 	  			calendarDate: date, 
 	  			calendarType: 'date', 
-	  			font: { fontSize: Alloy.CFG.size_19, fontFamily: Alloy.CFG.font_DroidSans }, 
+	  			font: { fontSize: Alloy.CFG.size_19, fontFamily: 'DroidSans' }, 
 	  			height: options.cellSize.height, 
 	  			isSelected: false,
 	  			left: i % 7 ? options.gapSize.left : 0, 

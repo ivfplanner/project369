@@ -39,12 +39,12 @@ exports.reload = function( args ) {
 		// Reload all note in folder
 		loadNotes({ f_id: args.f_id });
 	}
-}
+};
 
 function loadNav( f_data ) {
   	var title = Ti.UI.createView({ width: Ti.UI.SIZE, height: Ti.UI.SIZE, left: 0 });
 	title.add( Ti.UI.createImageView({ image: '/images/icons/notes.png', width: Alloy.CFG.size_30, height: Alloy.CFG.size_30, left: Alloy.CFG.size_15 }) );
-	title.add( Ti.UI.createLabel({ text: 'notes', font: { fontSize: Alloy.CFG.size_20, fontFamily: Alloy.CFG.font_DroidSans }, color: '#fff', left: Alloy.CFG.size_50 }) );
+	title.add( Ti.UI.createLabel({ text: 'notes', font: { fontSize: Alloy.CFG.size_20, fontFamily: 'DroidSans' }, color: '#fff', left: Alloy.CFG.size_50 }) );
 	
 	var rightPane = Ti.UI.createView({ layout: 'horizontal', width: Ti.UI.SIZE });
 	
@@ -57,7 +57,7 @@ function loadNav( f_data ) {
 		
 		var btnAddNew = Ti.UI.createView({ width: Alloy.CFG.size_38, height: Alloy.CFG.size_45 });
 		rightPane.add( btnAddNew );
-		btnAddNew.addEventListener('click', function() { newNote( f_data ) } );
+		btnAddNew.addEventListener('click', function() { newNote( f_data ); } );
 			btnAddNew.add( Ti.UI.createImageView({ image: '/images/icons/new-note.png', width: Alloy.CFG.size_30, height: Alloy.CFG.size_30, touchEnabled: false }) );	
 			
   	$.nav.init({
@@ -75,7 +75,7 @@ function loadNotes( args ) {
 	
 	if ( notesData.length == 0 ) {
 		var inner = Ti.UI.createView({ height: Alloy.CFG.size_45, top: 0, backgroundColor: '#fff' });
-		inner.add( Ti.UI.createLabel({ text: 'No note', font: { fontSize: Alloy.CFG.size_15, fontFamily: Alloy.CFG.font_DroidSans }, color: '#444', left: Alloy.CFG.size_35, top: Alloy.CFG.size_8, touchEnabled: false }) );
+		inner.add( Ti.UI.createLabel({ text: 'No note', font: { fontSize: Alloy.CFG.size_15, fontFamily: 'DroidSans' }, color: '#444', left: Alloy.CFG.size_35, top: Alloy.CFG.size_8, touchEnabled: false }) );
 		$.tblNotes.add( inner );
 	} else {
 		$.tblNotes.removeAllChildren();
@@ -88,7 +88,7 @@ function loadNotes( args ) {
 
 function addNote( title, id, f_id, hasTop ) {
   	var row = Ti.UI.createView({ f_id: f_id, n_id: id, noteName: title, height: Alloy.CFG.size_51, top: hasTop ? 1 : 0, backgroundColor: '#fff' });
-	row.add( Ti.UI.createLabel({ text: title, font: { fontSize: Alloy.CFG.size_15, fontFamily: Alloy.CFG.font_DroidSans }, color: '#444', left: Alloy.CFG.size_2, height: Alloy.CFG.size_51, touchEnabled: false }) );
+	row.add( Ti.UI.createLabel({ text: title, font: { fontSize: Alloy.CFG.size_15, fontFamily: 'DroidSans' }, color: '#444', left: Alloy.CFG.size_2, height: Alloy.CFG.size_51, touchEnabled: false }) );
 	return row;
 }
 

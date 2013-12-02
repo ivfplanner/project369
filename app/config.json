@@ -3,16 +3,8 @@
     "env:development": {},
     "env:test": {},
     "env:production": {},
-    "os:ios": {
-    	"font_DroidSans": "Droid Sans",
-    	"font_DroidSansBold": "Droid Sans",
-    	"font_DroidSerifItalic": "Droid Serif"
-    },
-    "os:android": {
-    	"font_DroidSans": "DroidSans",
-    	"font_DroidSansBold": "DroidSans-Bold",
-    	"font_DroidSerifItalic": "DroidSerif-Italic"
-    },
+    "os:ios": {},
+    "os:android": {},
     "dependencies": {
         "calendar": "1.0",
         "calendar_mini": "1.0",

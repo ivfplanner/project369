@@ -1,6 +1,6 @@
 "#calendar": { height: Ti.UI.SIZE, layout: 'vertical' }
 	
-	"#lblMonth": { font: { fontSize: Alloy.CFG.size_18, fontFamily: Alloy.CFG.font_DroidSans }, color: '#333', height: Alloy.CFG.size_38 }
+	"#lblMonth": { font: { fontSize: Alloy.CFG.size_18, fontFamily: 'DroidSans' }, color: '#333', height: Alloy.CFG.size_38 }
 		
 	"#weekContainer": { layout: 'horizontal', height: Alloy.CFG.size_36, backgroundGradient: { type: 'linear', colors: [{ color: '#1f0a33', position: 0.0 }, { color: '#330066', position: 1.0 }] } }		
 	

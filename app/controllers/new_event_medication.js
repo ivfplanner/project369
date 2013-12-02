@@ -15,7 +15,7 @@ function init() {
 function loadNav() {
 	var title = Ti.UI.createView({ width: Ti.UI.SIZE, height: Ti.UI.SIZE, left: 0 });
 	title.add( Ti.UI.createImageView({ image: '/images/icons/event.png', width: Alloy.CFG.size_30, height: Alloy.CFG.size_30, left: Alloy.CFG.size_15 }) );
-	title.add( Ti.UI.createLabel({ text: 'new medication', font: { fontSize: Alloy.CFG.size_20, fontFamily: Alloy.CFG.font_DroidSans }, color: '#fff', left: Alloy.CFG.size_50 }) );
+	title.add( Ti.UI.createLabel({ text: 'new medication', font: { fontSize: Alloy.CFG.size_20, fontFamily: 'DroidSans' }, color: '#fff', left: Alloy.CFG.size_50 }) );
 	
 	var rightPane = Ti.UI.createView({ layout: 'horizontal', width: Ti.UI.SIZE });
 	
@@ -65,7 +65,7 @@ function loadRelatedNames(name) {
 		var medicationName = eventData[i].name;
 		
 		var row = Ti.UI.createTableViewRow({ height: Alloy.CFG.size_30, selectedBackgroundColor: 'transparent' });
-		row.add( Ti.UI.createLabel({ text: medicationName, font: { fontSize: Alloy.CFG.size_15, fontFamily: Alloy.CFG.font_DroidSans }, color: '#666', left: Alloy.CFG.size_10, height: Alloy.CFG.size_30 }) );
+		row.add( Ti.UI.createLabel({ text: medicationName, font: { fontSize: Alloy.CFG.size_15, fontFamily: 'DroidSans' }, color: '#666', left: Alloy.CFG.size_10, height: Alloy.CFG.size_30 }) );
 		
 		(i != max) && row.add( Ti.UI.createView({ height: 1, backgroundColor: '#d7d7d7', bottom: 0 }) );
 		

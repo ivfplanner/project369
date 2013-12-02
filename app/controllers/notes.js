@@ -11,7 +11,7 @@ function init() {
 function loadNav() {
   	var title = Ti.UI.createView({ width: Ti.UI.SIZE, height: Ti.UI.SIZE, left: 0 });
 	title.add( Ti.UI.createImageView({ image: '/images/icons/notes.png', width: Alloy.CFG.size_30, height: Alloy.CFG.size_30, left: Alloy.CFG.size_15 }) );
-	title.add( Ti.UI.createLabel({ text: 'notes', font: { fontSize: Alloy.CFG.size_20, fontFamily: Alloy.CFG.font_DroidSans }, color: '#fff', left: Alloy.CFG.size_50 }) );
+	title.add( Ti.UI.createLabel({ text: 'notes', font: { fontSize: Alloy.CFG.size_20, fontFamily: 'DroidSans' }, color: '#fff', left: Alloy.CFG.size_50 }) );
 	
   	$.nav.init({
 		title: title,
@@ -48,7 +48,7 @@ function loadFolder( container, name, hasTop, id, mode ) {
 			folderId: id, 
 			value: name, 
 			hintText: 'Name', 
-			font: { fontSize: Alloy.CFG.size_15, fontFamily: Alloy.CFG.font_DroidSans }, 
+			font: { fontSize: Alloy.CFG.size_15, fontFamily: 'DroidSans' }, 
 			color: '#444', 
 			height: '110%', 
 			width: Alloy.CFG.size_260, 
@@ -82,7 +82,7 @@ function loadFolder( container, name, hasTop, id, mode ) {
 		folderNameField.addEventListener('postlayout', postlayout);	
 	} else {
 		var folder = Ti.UI.createView({ id: id, folderName: name, height: Alloy.CFG.size_51, top: hasTop ? 1 : 0, backgroundColor: '#fff' });
-		folder.add( Ti.UI.createLabel({ text: name, font: { fontSize: Alloy.CFG.size_15, fontFamily: Alloy.CFG.font_DroidSans }, color: '#444', left: Alloy.CFG.size_35, height: '100%', touchEnabled: false }) );
+		folder.add( Ti.UI.createLabel({ text: name, font: { fontSize: Alloy.CFG.size_15, fontFamily: 'DroidSans' }, color: '#444', left: Alloy.CFG.size_35, height: '100%', touchEnabled: false }) );
 		folder.add( Ti.UI.createImageView({ image: '/images/icons/folder.png', width: Alloy.CFG.size_30, height: Alloy.CFG.size_30, left: 0, touchEnabled: false }) );
 	}
 	

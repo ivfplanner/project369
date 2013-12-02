@@ -5,8 +5,18 @@ exports.init = function(sizes) {
 		screenWidth =  Ti.Platform.displayCaps.platformWidth,
 		screenHeight = Ti.Platform.displayCaps.platformHeight;
 	
+	Ti.API.log('screenWidth: ' + screenWidth + ' - screenHeight: ' + screenHeight);
+	
+	// force portrait orientation
+	if (screenWidth > screenHeight) {
+		var tmp = screenHeight;
+		screenHeight = screenWidth;
+		screenWidth = tmp;
+	}
+	
 	if (OS_IOS) {
-		screenHeight -= 20
+		// substract status bar's height 
+		screenHeight -= 20;
 		
 		for(var i=0,j=sizes.length; i<j; i++){
 		  	var num = sizes[i];
@@ -14,12 +24,12 @@ exports.init = function(sizes) {
 			cfg['size_' + (num > 0 ? num : '_' + num * -1)] = num;
 		};
 	} else {
+		// substract status bar's height 
 		screenHeight -= Math.round((25 * Ti.Platform.displayCaps.dpi)/160);
 		
 		for(var i=0,j=sizes.length; i<j; i++){
 		  	var num = sizes[i],
-		  		temp = (num * 100) / 320,
-		  		convert = Math.floor((screenWidth * temp) / 100);
+		  		convert = Math.floor((screenWidth * num) / 320);
 		  		
 			cfg['size_' + (num > 0 ? num : '_' + num * -1)] = convert;
 		};
@@ -30,7 +40,7 @@ exports.init = function(sizes) {
 	exports.convertSize = OS_IOS ? convertSize_ios : convertSize_android;
 	
 	Ti.API.log('Alloy.CFG: ' + JSON.stringify( cfg ));
-}
+};
 
 function convertSize_ios(num) {
 	var sizeName = 'size_' + (num > 0 ? num : '_' + num * -1);
@@ -45,11 +55,8 @@ function convertSize_android(num) {
 	if (Alloy.CFG[sizeName] != null) {
 		return Alloy.CFG[sizeName];
 	} else {
-		var temp = (num * 100) / 320,
-	  		convert = Math.floor((Ti.Platform.displayCaps.platformWidth * temp) / 100);
-	  		
+		var convert = Math.floor((Ti.Platform.displayCaps.platformWidth * num) / 320);
 		Alloy.CFG[sizeName] = convert;
-		
 		return convert;
 	}
 }

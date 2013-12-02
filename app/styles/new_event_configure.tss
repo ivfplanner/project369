@@ -14,8 +14,8 @@
 		
 		".txt-wrapper": { width: Alloy.CFG.size_256, backgroundImage: '/images/txt.png' }
 		
-		".label": { font: { fontSize: Alloy.CFG.size_15, fontFamily: Alloy.CFG.font_DroidSans }, color: '#444', left: 0 }
-		".link": { font: { fontSize: Alloy.CFG.size_15, fontFamily: Alloy.CFG.font_DroidSansBold, fontWeight: 'bold' }, color: '#3399cc', left: 0 }
+		".label": { font: { fontSize: Alloy.CFG.size_15, fontFamily: 'DroidSans' }, color: '#444', left: 0 }
+		".link": { font: { fontSize: Alloy.CFG.size_15, fontFamily: 'DroidSans-Bold' }, color: '#3399cc', left: 0 }
 		"#lblTime": { left: Alloy.CFG.size_7 }
 		
 		".v-box": { layout: 'vertical', height: Ti.UI.SIZE, width: Alloy.CFG.size_256 }
@@ -23,7 +23,7 @@
 	
 	".medication-box": { top: 0, width: Alloy.CFG.size_256 }
 		"#lblDosage": { color: '#000', left: Alloy.CFG.size_7 }
-		".dosage-txt": { font: { fontSize: Alloy.CFG.size_15, fontFamily: Alloy.CFG.font_DroidSans }, paddingLeft: 10, color: '#444', backgroundColor: 'transparent', keyboardType: Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION }
+		".dosage-txt": { font: { fontSize: Alloy.CFG.size_15, fontFamily: 'DroidSans' }, paddingLeft: 10, color: '#444', backgroundColor: 'transparent', keyboardType: Ti.UI.KEYBOARD_NUMBERS_PUNCTUATION }
 		".dosage-txt[platform=android]": { keyboardType: Ti.UI.KEYBOARD_DEFAULT }
 	
 	".button-container": { height: Alloy.CFG.size_63, top: Alloy.CFG.size_5, bottom: Alloy.CFG.size_4, left: Alloy.CFG.size_4 }		

@@ -28,7 +28,7 @@ function init() {
 function loadNav() {
   	var title = Ti.UI.createView({ width: Ti.UI.SIZE, height: Ti.UI.SIZE, left: 0 });
 	title.add( Ti.UI.createImageView({ image: '/images/icons/settings.png', width: Alloy.CFG.size_30, height: Alloy.CFG.size_30, left: Alloy.CFG.size_15 }) );
-	title.add( Ti.UI.createLabel({ text: 'settings', font: { fontSize: Alloy.CFG.size_20, fontFamily: Alloy.CFG.font_DroidSans }, color: '#fff', left: Alloy.CFG.size_50 }) );
+	title.add( Ti.UI.createLabel({ text: 'settings', font: { fontSize: Alloy.CFG.size_20, fontFamily: 'DroidSans' }, color: '#fff', left: Alloy.CFG.size_50 }) );
   	
   	$.nav.init({
 		title: title
@@ -71,7 +71,7 @@ function showPicker(title, options, key, values) {
 	  	values: values
 	};
 	
-	var dialog = Ti.UI.createOptionDialog(opts)
+	var dialog = Ti.UI.createOptionDialog(opts);
 	dialog.show();
 	dialog.addEventListener('click', function(e) {
 		if ( e.source.key[0] == 'snooze' ) {

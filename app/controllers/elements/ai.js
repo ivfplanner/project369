@@ -1,5 +1,13 @@
 var aiTimeout,
+	aiTimeout_2,
 	args = arguments[0] || {};
+
+$.ai.addEventListener('postlayout', postlayout);
+
+function postlayout(e) {
+  	$.ai.removeEventListener('postlayout', postlayout);
+  	$.ai.isReady = true;
+}
 
 if (args.visible) {
 	$.activityIndicator.show();
@@ -10,6 +18,11 @@ exports.toggle = function(visible, message, timeout) {
 	if (aiTimeout) {
 		clearTimeout(aiTimeout);
 		aiTimeout = null;
+	}
+	
+	if (aiTimeout_2) {
+		clearTimeout(aiTimeout_2);
+		aiTimeout_2 = null;
 	}
 	
 	if (visible) {
@@ -28,8 +41,14 @@ exports.toggle = function(visible, message, timeout) {
 			}, timeout);
 		}
 	} else {
-		$.activityIndicator.hide();
-		$.ai.hide();
+		if ($.ai.isReady) {
+			$.activityIndicator.hide();
+			$.ai.hide();
+		} else {
+			aiTimeout_2 = setTimeout(function(){
+				exports.toggle(false);
+			}, 500);
+		}
 	}
 };
 

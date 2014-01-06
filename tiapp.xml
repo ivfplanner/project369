@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-    <id>com.imobicloud.ivf</id>
+    <id>com.ivfplanner</id>
     <name>IVF Planner</name>
     <version>1.0</version>
     <publisher>imobicloud</publisher>
@@ -29,7 +29,7 @@
         </orientations>
     </iphone>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
-        <manifest>
+        <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="2" android:versionName="1.1">
             <uses-permission android:name="android.permission.VIBRATE"/>
         </manifest>
         <services>
